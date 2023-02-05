@@ -1,0 +1,257 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8517,        247]
+NotebookOptionsPosition[      7096,        215]
+NotebookOutlinePosition[      7498,        231]
+CellTagsIndexPosition[      7455,        228]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["LHW 10", "Title",
+ CellChangeTimes->{{3.8846289593164096`*^9, 
+  3.8846289630511923`*^9}},ExpressionUUID->"980060ec-021f-4ff9-bf19-\
+c6e57a9f4e73"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["1. ",
+  FontSize->16],
+ StyleBox["Implement Algorithm 10.1 as a function called MyQR.  The input \
+should be a Tall Skinny matrix A.  The output should be two matrices V and R \
+the same size as A.",
+  FontSize->16,
+  FontSlant->"Italic",
+  FontVariations->{"Underline"->True}],
+ " "
+}], "Section",
+ CellChangeTimes->{{3.8846289714869747`*^9, 
+  3.8846290417880936`*^9}},ExpressionUUID->"4627f5d2-3973-4ba2-bdbe-\
+0002720ddfb1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"HouseVec", "[", "a_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"v", "=", "a"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"v", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "+=", 
+      RowBox[{
+       RowBox[{"Sign", "[", 
+        RowBox[{"a", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+        "]"}], 
+       RowBox[{"Norm", "[", "a", "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"v", "/", 
+      RowBox[{"Norm", "[", "v", "]"}]}]}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HouseMat", "[", "a_", "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "v", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"v", "=", 
+      RowBox[{"HouseVec", "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"IdentityMatrix", "[", 
+       RowBox[{"Length", "[", "a", "]"}], "]"}], "-", 
+      RowBox[{"2", " ", 
+       RowBox[{"KroneckerProduct", "[", 
+        RowBox[{"v", ",", "v"}], "]"}]}]}]}]}], "]"}]}]}], "Input",
+ Background->GrayLevel[0.85],
+ CellLabel->"In[8]:=",ExpressionUUID->"5750fc3b-92ff-42da-a8d0-7ec2f55fc820"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HouseActionVec", "[", 
+   RowBox[{"x_", ",", "a_"}], "]"}], ":=", " ", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "v", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"v", "=", 
+      RowBox[{"HouseVec", "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"x", "-", 
+      RowBox[{"2", " ", "v", " ", 
+       RowBox[{"(", 
+        RowBox[{"v", ".", "x"}], ")"}]}]}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.884628151485273*^9, 3.8846281527375097`*^9}},
+ Background->GrayLevel[0.85],
+ CellLabel->"In[10]:=",ExpressionUUID->"92f2909c-47b8-41f0-9a58-57a84c838b29"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyQR", "[", "A_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"m", ",", "n", ",", "a", ",", "V", ",", "R"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"m", ",", "n"}], "}"}], "=", 
+      RowBox[{"Dimensions", "[", "A", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"V", "=", 
+      RowBox[{"IdentityMatrix", "[", "m", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"R", "=", "A"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"j", "=", "1"}], ",", 
+       RowBox[{"j", "<=", "n"}], ",", 
+       RowBox[{"j", "++"}], ",", 
+       RowBox[{
+        RowBox[{"a", "=", 
+         RowBox[{"R", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"j", ";;", 
+             RowBox[{"-", "1"}]}], ",", "j"}], "]"}], "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"v", "=", 
+         RowBox[{"HouseVec", "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"H", "=", 
+         RowBox[{"HouseMat", "[", "a", "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"R", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"j", ";;", 
+             RowBox[{"-", "1"}]}], ",", "All"}], "]"}], "]"}], "=", 
+         RowBox[{"H", ".", 
+          RowBox[{"R", "[", 
+           RowBox[{"[", 
+            RowBox[{
+             RowBox[{"j", ";;", 
+              RowBox[{"-", "1"}]}], ",", "All"}], "]"}], "]"}]}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"V", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", 
+            RowBox[{"j", ";;", 
+             RowBox[{"-", "1"}]}]}], "]"}], "]"}], "=", 
+         RowBox[{
+          RowBox[{"V", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", 
+             RowBox[{"j", ";;", 
+              RowBox[{"-", "1"}]}]}], "]"}], "]"}], ".", 
+          RowBox[{"Transpose", "[", "H", "]"}]}]}], ";"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"V", ",", "R"}], "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8846280106215878`*^9, 3.8846280609032726`*^9}},
+ Background->GrayLevel[0.85],
+ CellLabel->"In[11]:=",ExpressionUUID->"2ca0c574-db3d-4dba-97c6-f7f67688b091"],
+
+Cell["Test for algorithm 10.1", "Text",
+ CellChangeTimes->{{3.884630168805241*^9, 
+  3.884630198829033*^9}},ExpressionUUID->"ec6c341c-cf74-4a16-890b-\
+39836cffa3ff"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1520", ",", "2"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"V", ",", "R"}], "}"}], " ", "=", " ", 
+   RowBox[{"MyQR", "[", "A", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8846302082066298`*^9, 3.8846302563220887`*^9}},
+ CellLabel->"In[67]:=",ExpressionUUID->"de94f297-b217-4a2c-aec7-dd1f9b76545c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "V", "]"}]], "Input",
+ CellChangeTimes->{{3.8846302608621483`*^9, 3.8846302649626913`*^9}},
+ CellLabel->"In[69]:=",ExpressionUUID->"746e31e6-7c92-494f-83fd-a71439e21e2b"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1520", ",", "1520"}], "}"}]], "Output",
+ CellChangeTimes->{3.8846302687684746`*^9},
+ CellLabel->"Out[69]=",ExpressionUUID->"355e4905-62ce-4361-be25-b200d1be087a"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "R", "]"}]], "Input",
+ CellChangeTimes->{{3.884630270158749*^9, 3.8846302736539817`*^9}},
+ CellLabel->"In[70]:=",ExpressionUUID->"ae550cbc-5b70-49b3-adc9-86f3ff176ce7"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1520", ",", "2"}], "}"}]], "Output",
+ CellChangeTimes->{3.884630274829901*^9},
+ CellLabel->"Out[70]=",ExpressionUUID->"a379a126-ced5-4950-8101-344c398dca32"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1141.2, 578.4},
+WindowMargins->{{960, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"6b29bfe8-7892-4d00-b0a1-77ff7eb259bc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 153, 3, 98, "Title",ExpressionUUID->"980060ec-021f-4ff9-bf19-c6e57a9f4e73"],
+Cell[CellGroupData[{
+Cell[758, 29, 455, 13, 67, "Section",ExpressionUUID->"4627f5d2-3973-4ba2-bdbe-0002720ddfb1"],
+Cell[1216, 44, 1238, 32, 140, "Input",ExpressionUUID->"5750fc3b-92ff-42da-a8d0-7ec2f55fc820"],
+Cell[2457, 78, 637, 16, 83, "Input",ExpressionUUID->"92f2909c-47b8-41f0-9a58-57a84c838b29"],
+Cell[3097, 96, 2314, 63, 197, "Input",ExpressionUUID->"2ca0c574-db3d-4dba-97c6-f7f67688b091"],
+Cell[5414, 161, 165, 3, 35, "Text",ExpressionUUID->"ec6c341c-cf74-4a16-890b-39836cffa3ff"],
+Cell[5582, 166, 585, 17, 48, "Input",ExpressionUUID->"de94f297-b217-4a2c-aec7-dd1f9b76545c"],
+Cell[CellGroupData[{
+Cell[6192, 187, 212, 3, 28, "Input",ExpressionUUID->"746e31e6-7c92-494f-83fd-a71439e21e2b"],
+Cell[6407, 192, 202, 4, 32, "Output",ExpressionUUID->"355e4905-62ce-4361-be25-b200d1be087a"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6646, 201, 210, 3, 28, "Input",ExpressionUUID->"ae550cbc-5b70-49b3-adc9-86f3ff176ce7"],
+Cell[6859, 206, 197, 4, 32, "Output",ExpressionUUID->"a379a126-ced5-4950-8101-344c398dca32"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
