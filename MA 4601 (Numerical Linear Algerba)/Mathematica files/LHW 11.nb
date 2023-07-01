@@ -1,0 +1,506 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17142,        498]
+NotebookOptionsPosition[     15456,        460]
+NotebookOutlinePosition[     15851,        476]
+CellTagsIndexPosition[     15808,        473]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "LHW 11\n",
+ StyleBox["Name: Dhruvit Manojkumar Mavani",
+  FontSize->18,
+  FontColor->GrayLevel[0]]
+}], "Title",
+ CellChangeTimes->{{3.885144942064929*^9, 
+  3.885144962749553*^9}},ExpressionUUID->"de624c27-e07b-4cea-842a-\
+c9aa093b1664"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["1. In the programming language of your choice compute the least \
+square fit of a 6th degree polynomial to\n\t",
+  FontSize->16],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"atan", "(", 
+    RowBox[{"1", "+", 
+     RowBox[{"3", " ", 
+      RowBox[{"sin", "(", "x", ")"}]}], "+", 
+     RowBox[{
+      SuperscriptBox["cos", "2"], "(", 
+      RowBox[{"3", "x"}], ")"}], "+", 
+     RowBox[{"ln", "(", 
+      RowBox[{"1", "+", 
+       SuperscriptBox["x", "2"]}], ")"}]}], ")"}], TraditionalForm]],
+  FontSize->16,ExpressionUUID->"0f5ad470-a521-4219-b354-d3c3aea01e24"],
+ StyleBox["\n     using m equally spaced points on the interval ",
+  FontSize->16],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "1"}], "]"}], TraditionalForm]],
+  FontSize->16,ExpressionUUID->"c58850f6-2028-485f-81de-8b026ae709c1"],
+ StyleBox[".  Do not use a black box solver. Assume ",
+  FontSize->16],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"m", ">", "8"}], TraditionalForm]],
+  FontSize->16,ExpressionUUID->"ecd1d2c6-0503-4634-a420-79451a6a31aa"],
+ StyleBox[" and explain the linear algebra you are doing to solve your\n     \
+system. ",
+  FontSize->16]
+}], "Section",
+ CellChangeTimes->{{3.8851455826428356`*^9, 
+  3.8851456203521247`*^9}},ExpressionUUID->"01461c99-54a7-47e7-b73d-\
+49cdbce4d3df"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"m", " ", "=", " ", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"xValues", "=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "1."}], "+", 
+     RowBox[{"2", "*", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"i", "-", "1"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"m", "-", "1"}], ")"}]}]}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "m"}], "}"}]}], "]"}], 
+  "                             ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"m", " ", "equally", " ", "spaced", " ", "points"}], " ", 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.885147332860898*^9, 3.8851473667765875`*^9}, {
+   3.885147408812333*^9, 3.8851474299922433`*^9}, 3.8853019599528427`*^9},
+ CellLabel->"In[1]:=",ExpressionUUID->"f6c0e643-b5af-4914-a547-0789cc931c57"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "1.`"}], ",", 
+   RowBox[{"-", "0.7777777777777778`"}], ",", 
+   RowBox[{"-", "0.5555555555555556`"}], ",", 
+   RowBox[{"-", "0.33333333333333337`"}], ",", 
+   RowBox[{"-", "0.11111111111111116`"}], ",", "0.11111111111111116`", ",", 
+   "0.33333333333333326`", ",", "0.5555555555555556`", ",", 
+   "0.7777777777777777`", ",", "1.`"}], "}"}]], "Output",
+ CellChangeTimes->{3.88514736733927*^9, 3.8851478669950747`*^9, 
+  3.8852186962002077`*^9, 3.8852196931953087`*^9, 3.885219780558257*^9, 
+  3.8853019609392653`*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"2d25260e-2a4e-4b88-9f88-300b5441410a"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"yValues", "=", 
+   RowBox[{"ArcTan", "[", 
+    RowBox[{"1.", "+", 
+     RowBox[{"3", " ", 
+      RowBox[{"Sin", "[", "xValues", "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"Cos", "[", 
+       RowBox[{"3", " ", "xValues"}], "]"}], "^", "2"}], "+", 
+     RowBox[{"Log", "[", 
+      RowBox[{"1", "+", 
+       RowBox[{"xValues", "^", "2"}]}], "]"}]}], "]"}]}], ";", 
+  "                 ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Function", " ", "to", " ", "be", " ", "solved"}], " ", 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.885147406350668*^9, 3.885147460759549*^9}, {
+   3.885147901003677*^9, 3.885147906364169*^9}, {3.885219694924861*^9, 
+   3.8852196961126146`*^9}, 3.885301966110795*^9},
+ CellLabel->"In[3]:=",ExpressionUUID->"077ab696-d25a-44dc-8d22-38a9db4c8027"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"A", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"xValues", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], "^", "j"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "m"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "0", ",", "6"}], "}"}]}], "]"}]}], ";"}], 
+  "                               ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Matrix", " ", "of", " ", "powers", " ", "of", " ", "xValues"}], 
+   " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", " ", "=", " ", "yValues"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"coeff", " ", "=", " ", 
+   RowBox[{"LinearSolve", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Transpose", "[", "A", "]"}], ".", "A"}], ",", " ", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "A", "]"}], ".", "b"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"polynomial", " ", "=", " ", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"coeff", "[", 
+      RowBox[{"[", "i", "]"}], "]"}], " ", 
+     RowBox[{"x", "^", 
+      RowBox[{"(", 
+       RowBox[{"i", "-", "1"}], ")"}]}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"6", "+", "1"}]}], "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.885147469092563*^9, 3.8851475207821693`*^9}, {
+   3.8851476349704237`*^9, 3.885147838279825*^9}, {3.885147913854206*^9, 
+   3.8851479419941273`*^9}, {3.8851479762287383`*^9, 3.885148007209832*^9}, 
+   3.885148061469783*^9, {3.8852187095470695`*^9, 3.8852187161543508`*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"cd95ba62-f2b6-43c0-8a08-1cb6299d2886"],
+
+Cell[BoxData[
+ RowBox[{"1.1349457964671759`", "\[VeryThinSpace]", "+", 
+  RowBox[{"1.308025833829597`", " ", "x"}], "-", 
+  RowBox[{"4.108197852201617`", " ", 
+   SuperscriptBox["x", "2"]}], "-", 
+  RowBox[{"0.13710204896585063`", " ", 
+   SuperscriptBox["x", "3"]}], "+", 
+  RowBox[{"7.653448547195538`", " ", 
+   SuperscriptBox["x", "4"]}], "-", 
+  RowBox[{"0.5642387245014276`", " ", 
+   SuperscriptBox["x", "5"]}], "-", 
+  RowBox[{"3.9154020226750164`", " ", 
+   SuperscriptBox["x", "6"]}]}]], "Output",
+ CellChangeTimes->{
+  3.8852187167632065`*^9, 3.885219699052015*^9, {3.8852197829115343`*^9, 
+   3.885219783941743*^9}, 3.8853020079491577`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"c2c45b63-a57e-495f-a104-0d507efec07b"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Here, ",
+ StyleBox["A ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "is the design matrix, and ",
+ StyleBox["b ",
+  FontWeight->"Bold",
+  FontSlant->"Italic"],
+ "is the vector of values of the function ",
+ StyleBox["atan(1 + 3 sin(x) + cos^2(3x) + Ln(1 + x^2))",
+  FontWeight->"Bold"],
+ " at the points ",
+ StyleBox["xValues",
+  FontWeight->"Bold"],
+ ". The normal equations ",
+ StyleBox["Transpose[A].A.coeff = Transpose[A].b ",
+  FontWeight->"Bold"],
+ " represent the linear system of equations that is solved to find the \
+polynomial coefficients that give the best least squares fit to the data."
+}], "Text",
+ CellChangeTimes->{{3.8852188352636504`*^9, 
+  3.8852188887818136`*^9}},ExpressionUUID->"b64dd56c-7f02-41bf-b312-\
+85ab8814537d"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["1.1 Repeat the process using a different linear \
+algebraic tool. Again explain what the linear algebra is.",
+ FontSize->14]], "Subsection",
+ CellChangeTimes->{{3.8852193006627073`*^9, 
+  3.8852193038677387`*^9}},ExpressionUUID->"5cd02109-1dc5-4dbb-8f6b-\
+9c76c82e8eee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Now", " ", "we", " ", "will", " ", "use", " ", "Singular", " ", "Value", 
+    " ", "Decomposition", " ", "to", " ", "solve", " ", "least", " ", 
+    "square", " ", "problem"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"m", "=", "10"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"xValues", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        RowBox[{"2", "*", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"i", "-", "1"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{"m", "-", "1"}], ")"}]}]}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "m"}], "}"}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"yValues", "=", 
+     RowBox[{"ArcTan", "[", 
+      RowBox[{"1", "+", 
+       RowBox[{"3", " ", 
+        RowBox[{"Sin", "[", "xValues", "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"Cos", "[", 
+         RowBox[{"3", " ", "xValues"}], "]"}], "^", "2"}], "+", 
+       RowBox[{"Log", "[", 
+        RowBox[{"1", "+", 
+         RowBox[{"xValues", "^", "2"}]}], "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{"A", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"xValues", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "^", "j"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "m"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "0", ",", "6"}], "}"}]}], "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"b", "=", "yValues"}], ";"}], "\[IndentingNewLine]", "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"U", ",", "S", ",", "V"}], "}"}], "=", 
+     RowBox[{"SingularValueDecomposition", "[", "A", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"coeff", "=", 
+     RowBox[{"V", ".", 
+      RowBox[{"Inverse", "[", "S", "]"}], ".", 
+      RowBox[{"Transpose", "[", "U", "]"}], ".", "b"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"polynomial", "=", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"coeff", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], " ", 
+        RowBox[{"x", "^", 
+         RowBox[{"(", 
+          RowBox[{"i", "-", "1"}], ")"}]}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", 
+         RowBox[{"6", "+", "1"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8852193694356966`*^9, 3.885219402013259*^9}, {
+   3.8852194371041627`*^9, 3.8852194513628035`*^9}, {3.885219611446225*^9, 
+   3.885219627160143*^9}, {3.8852196585165033`*^9, 3.8852196716867456`*^9}, {
+   3.885219703529694*^9, 3.8852197223429184`*^9}, {3.8852198209400835`*^9, 
+   3.885219878753294*^9}, {3.885220020767537*^9, 3.8852201457568693`*^9}, 
+   3.8852202704464607`*^9},ExpressionUUID->"e2a2c27e-e819-4dc3-890e-\
+5cd08f46b7fd"],
+
+Cell[TextData[{
+ "The ",
+ StyleBox["Singular Value Decomposition",
+  FontWeight->"Bold"],
+ " is used  find the coefficients ",
+ StyleBox["coeff",
+  FontWeight->"Bold"],
+ ". The line ",
+ StyleBox["coeff = V.Inverse[S].Transpose[U].b",
+  FontWeight->"Bold"],
+ " uses the SVD to find coeff. The resulting coeff vector contains the \
+polynomial coefficients that give the best least squares fit to the data. "
+}], "Text",
+ CellChangeTimes->{{3.88522015040112*^9, 3.8852202076177855`*^9}, 
+   3.8852202377206774`*^9},ExpressionUUID->"a208b80e-4df3-44c4-98c3-\
+66641dd30031"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ StyleBox["2. Repeat the process (using any linear algebra tool) from Q1 for \
+the set of functions (",
+  FontSize->16],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"cos", "(", 
+    RowBox[{"i", " ", "x"}], ")"}], TraditionalForm]],
+  FontSize->16,ExpressionUUID->"9459e422-d5dd-4295-8539-b8cff541546a"],
+ StyleBox[" for i in ",
+  FontSize->16],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"1", ":", "n"}], TraditionalForm]],
+  FontSize->16,ExpressionUUID->"7e3b298f-d6af-4ce7-8a85-769ecc577c90"],
+ StyleBox[" and ",
+  FontSize->16],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"sin", "(", 
+    RowBox[{"i", " ", "x"}], ")"}], TraditionalForm]],
+  FontSize->16,ExpressionUUID->"4625fccb-d790-41c1-82af-10372da4cc27"],
+ StyleBox[" for i in 1:n and the really boring constant function \
+\[OpenCurlyDoubleQuote]1\[CloseCurlyDoubleQuote]).",
+  FontSize->16]
+}], "Section",
+ CellChangeTimes->{{3.8852205741885676`*^9, 
+  3.8852205755277233`*^9}},ExpressionUUID->"5227b2ad-3105-40a9-b26a-\
+159b67412208"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"m", " ", "=", " ", "10"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"xValues", " ", "=", " ", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "1."}], " ", "+", " ", 
+       RowBox[{"2", "*", 
+        RowBox[{"i", "/", 
+         RowBox[{"(", 
+          RowBox[{"m", " ", "-", " ", "1"}], ")"}]}]}]}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "0", ",", " ", 
+        RowBox[{"m", " ", "-", " ", "1"}]}], "}"}]}], "]"}]}], ";"}], 
+  "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"i", " ", "xValues"}], "]"}], ",", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"i", " ", "xValues"}], "]"}]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "1", ",", " ", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"A", "=", "  ", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"A", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", " ", "=", " ", 
+   RowBox[{"Transpose", "[", "A", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", " ", "=", " ", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Cos", "[", 
+      RowBox[{"i", " ", "xValues"}], "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "1", ",", " ", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"b", " ", "=", " ", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"b", ",", " ", "1"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"coeff", " ", "=", " ", 
+   RowBox[{"LinearSolve", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Transpose", "[", "A", "]"}], ".", "A"}], ",", " ", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "A", "]"}], ".", "b"}]}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"polynomial", " ", "=", " ", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"coeff", "[", 
+       RowBox[{"[", "i", "]"}], "]"}], " ", 
+      RowBox[{"xValues", "^", 
+       RowBox[{"(", 
+        RowBox[{"i", " ", "-", " ", "1"}], ")"}]}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "1", ",", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", "*", "n"}], " ", "+", " ", "1"}], ")"}]}], "}"}]}], 
+    "]"}]}], ";"}], "\n"}], "Input",
+ CellChangeTimes->{{3.885220629655582*^9, 3.8852206296651845`*^9}, {
+   3.8852207082426176`*^9, 3.8852207575143366`*^9}, {3.8852207902461185`*^9, 
+   3.8852208374445353`*^9}, {3.8852208721457205`*^9, 3.885220889186649*^9}, {
+   3.8852210989991283`*^9, 3.8852210998611927`*^9}, 3.885302037965227*^9},
+ CellLabel->"In[8]:=",ExpressionUUID->"c4f6ac99-829c-400b-acf9-1a479b139599"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{949, 521},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"a12bb76e-e673-4c5d-b71e-5b345f2c9212"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 255, 8, 125, "Title",ExpressionUUID->"de624c27-e07b-4cea-842a-c9aa093b1664"],
+Cell[CellGroupData[{
+Cell[860, 34, 1328, 37, 145, "Section",ExpressionUUID->"01461c99-54a7-47e7-b73d-49cdbce4d3df"],
+Cell[CellGroupData[{
+Cell[2213, 75, 829, 22, 48, "Input",ExpressionUUID->"f6c0e643-b5af-4914-a547-0789cc931c57"],
+Cell[3045, 99, 651, 13, 32, "Output",ExpressionUUID->"2d25260e-2a4e-4b88-9f88-300b5441410a"]
+}, Open  ]],
+Cell[3711, 115, 801, 20, 48, "Input",ExpressionUUID->"077ab696-d25a-44dc-8d22-38a9db4c8027"],
+Cell[CellGroupData[{
+Cell[4537, 139, 1665, 44, 86, "Input",ExpressionUUID->"cd95ba62-f2b6-43c0-8a08-1cb6299d2886"],
+Cell[6205, 185, 730, 16, 32, "Output",ExpressionUUID->"c2c45b63-a57e-495f-a104-0d507efec07b"]
+}, Open  ]],
+Cell[6950, 204, 764, 23, 81, "Text",ExpressionUUID->"b64dd56c-7f02-41bf-b312-85ab8814537d"],
+Cell[CellGroupData[{
+Cell[7739, 231, 294, 5, 46, "Subsection",ExpressionUUID->"5cd02109-1dc5-4dbb-8f6b-9c76c82e8eee"],
+Cell[8036, 238, 2931, 81, 238, "Input",ExpressionUUID->"e2a2c27e-e819-4dc3-890e-5cd08f46b7fd"],
+Cell[10970, 321, 569, 15, 58, "Text",ExpressionUUID->"a208b80e-4df3-44c4-98c3-66641dd30031"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11588, 342, 993, 28, 75, "Section",ExpressionUUID->"5227b2ad-3105-40a9-b26a-159b67412208"],
+Cell[12584, 372, 2844, 84, 257, "Input",ExpressionUUID->"c4f6ac99-829c-400b-acf9-1a479b139599"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
