@@ -61,6 +61,7 @@ for i = 1:length(t)
     set(gca,'ZDir','reverse')
     hold on
     plot3(xR_i,yR_i,zR_i,'square','Color','r','MarkerSize',10,'MarkerEdgeColor','auto','LineWidth',2,'MarkerFaceColor',"#EDB120")
+    hold off
     grid on
     xlabel('North (m)')
     ylabel('East (m)')
