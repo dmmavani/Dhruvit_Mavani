@@ -54,16 +54,17 @@ for i = 1:length(k)
     zR_i(:,i) = zR(:,k(i));
 
     % Plot
-    clf
     plot(x_i,z_i,'-o','Color','b','MarkerSize',4,'MarkerFaceColor','#D9FFFF')
+    set(gca,'YDir','reverse')
     hold on
+    title('Tether-ROV Interaction at t = ',round(num2str(t(k))))
     plot(xR_i,zR_i,'square','Color','r','MarkerSize',10,'MarkerEdgeColor','auto','LineWidth',2,'MarkerFaceColor',"#EDB120")
     hold off
+    if t~=length(k)
+        clf
     grid on
     xlabel('North (m)')
     ylabel('Down (m)')
-    set(gca,'YDir','reverse')
-    title('Tether-ROV Interaction')
     % zlabel('Down (m)')
     xlim([-12 7])
     
