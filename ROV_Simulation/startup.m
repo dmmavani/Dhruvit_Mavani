@@ -8,7 +8,7 @@ addpath(fullfile(projectRootDir,genpath('figures')),'-end');
 addpath(fullfile(projectRootDir,'functions'),'-end');
 addpath(fullfile(projectRootDir,'libraries'),'-end');
 addpath(fullfile(projectRootDir,genpath('models')),'-end');
-addpath(fullfile(projectRootDir,'scripts'),'-end');
+addpath(fullfile(projectRootDir,genpath('scripts')),'-end');
 addpath(fullfile(projectRootDir,'work'),'-end');
 
 
