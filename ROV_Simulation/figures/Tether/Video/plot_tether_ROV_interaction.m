@@ -42,10 +42,12 @@ zR_i = zeros(1,length(k));
 x_i = zeros(11,length(k));
 y_i = zeros(11,length(k));
 z_i = zeros(11,length(k));
+% time = zeros(length(k),1);
 
 % frame capturing
 figure
 for i = 1:length(k)
+    time = t(k(i));
     x_i(:,i) = x(:,k(i));
     y_i(:,i) = y(:,k(i));
     z_i(:,i) = z(:,k(i));
@@ -53,7 +55,7 @@ for i = 1:length(k)
     yR_i(:,i) = yR(:,k(i));
     zR_i(:,i) = zR(:,k(i));
 
-    % Plot
+    %% Plot
     clf
     plot(x_i,z_i,'-o','Color','b','MarkerSize',4,'MarkerFaceColor','#D9FFFF')
     hold on
@@ -65,12 +67,10 @@ for i = 1:length(k)
     xlim([-12 7])
     ylim([0 30])
     set(gca,'YDir','reverse')
-    title('Tether-ROV Interaction')
+    title(['Tether-ROV Interaction at t = ',round(num2str(time)) , 's'])
     % zlabel('Down (m)')
     
-    
-
-    % Animation
+    %% Animation
      pause(0.1)
      frame(i) = getframe(gcf);
 
