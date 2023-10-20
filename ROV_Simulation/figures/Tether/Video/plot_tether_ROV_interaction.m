@@ -62,10 +62,12 @@ for i = 1:length(k)
     grid on
     xlabel('North (m)')
     ylabel('Down (m)')
+    xlim([-12 7])
+    ylim([0 30])
     set(gca,'YDir','reverse')
     title('Tether-ROV Interaction')
     % zlabel('Down (m)')
-    xlim([-12 7])
+    
     
 
     % Animation
