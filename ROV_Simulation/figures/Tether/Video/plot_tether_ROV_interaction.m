@@ -33,7 +33,7 @@ z = [zt;zR];
 %% PLotting
 
 % Define no of samples to be used
-k = round(linspace(1,length(t),35));
+k = round(linspace(1,length(t),60));
 
 % Initialize the variables for loop
 xR_i = zeros(1,length(k));
@@ -45,7 +45,7 @@ z_i = zeros(11,length(k));
 % time = zeros(length(k),1);
 
 % frame capturing
-figure
+% figure
 for i = 1:length(k)
     time = t(k(i));
     x_i(:,i) = x(:,k(i));
@@ -56,18 +56,20 @@ for i = 1:length(k)
     zR_i(:,i) = zR(:,k(i));
 
     %% Plot
-    clf
-    plot(x_i,z_i,'-o','Color','b','MarkerSize',4,'MarkerFaceColor','#D9FFFF')
+    plot3(x_i(:,i),y_i(:,i),z_i(:,i),'-o','Color','b','MarkerSize',4,'MarkerFaceColor','#D9FFFF')
     hold on
-    plot(xR_i,zR_i,'square','Color','r','MarkerSize',10,'MarkerEdgeColor','auto','LineWidth',2,'MarkerFaceColor',"#EDB120")
+    plot3(xR_i(:,i),yR_i(:,i),zR_i(:,i),'square','Color','r','MarkerSize',10,'MarkerEdgeColor','auto','LineWidth',2,'MarkerFaceColor',"#EDB120")
     hold off
     grid on
     xlabel('North (m)')
-    ylabel('Down (m)')
+    ylabel('East (m)')
+    zlabel('Down (m)')
     xlim([-12 7])
-    ylim([0 30])
-    set(gca,'YDir','reverse')
+    % ylim([0 30])
+    zlim([0 30])
+    set(gca,'ZDir','reverse')
     title(['Tether-ROV Interaction at t = ',round(num2str(time)) , 's'])
+  
     % zlabel('Down (m)')
     
     %% Animation
@@ -77,7 +79,7 @@ for i = 1:length(k)
 end
 
 % save video
-video = VideoWriter('tether_ROV_interaction_2D','MPEG-4');
+video = VideoWriter('tether_ROV_interaction_3D','MPEG-4');
 video.FrameRate = 2;
 open(video);
 writeVideo(video,frame);
