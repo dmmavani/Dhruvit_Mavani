@@ -5,12 +5,17 @@ Version: 5.0.1
 
 Initializing the Simulation Class...
 	Case Dir: C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\Mooring\MoorDyn 
-Elapsed time is 0.396467 seconds.
+Elapsed time is 0.221749 seconds.
 
 WEC-Sim Pre-processing ...   
+[Warning: Removed 'C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\Mooring\MoorDyn\output' from the MATLAB path for this
+MATLAB session.
+	See 'doc path' for more information.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulationClass/setup', 'C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\objects\simulationClass.m', 162)" style="font-weight:bold">simulationClass/setup</a> (<a href="matlab: opentoline('C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\objects\simulationClass.m',162,0)">line 162</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('initializeWecSim', 'C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\functions\initializeWecSim.m', 215)" style="font-weight:bold">initializeWecSim</a> (<a href="matlab: opentoline('C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\functions\initializeWecSim.m',215,0)">line 215</a>)] 
 	Infinite water depth specified in BEM and "waves.waterDepth" not specified in input file.
 Set water depth to 200m for visualization.
-Elapsed time is 0.805793 seconds.
+Elapsed time is 0.816921 seconds.
 
 WEC-Sim Simulation Settings:
 	Start Time                     (sec) = 0
@@ -48,4 +53,4 @@ List of Constraint(s): Number of Constraints = 1
 
 
 Simulating the WEC device defined in the SimMechanics model C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\Mooring\MoorDyn\RM3MoorDyn.slx...   
-Elapsed time is 0.084236 seconds.
+Elapsed time is 0.018311 seconds.
