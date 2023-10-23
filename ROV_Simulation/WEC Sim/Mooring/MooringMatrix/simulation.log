@@ -1,0 +1,82 @@
+
+WEC-Sim Input From Standard wecSimInputFile.m Of Case Directory... 
+WEC-Sim: An open-source code for simulating wave energy converters
+Version: 5.0.1
+
+Initializing the Simulation Class...
+	Case Dir: C:\Users\Dizzy\Documents\GitHub\WEC-Sim_Applications\Mooring\MooringMatrix 
+Elapsed time is 0.453734 seconds.
+
+WEC-Sim Pre-processing ...   
+	Infinite water depth specified in BEM and "waves.waterDepth" not specified in input file.
+Set water depth to 200m for visualization.
+Elapsed time is 0.842284 seconds.
+
+WEC-Sim Simulation Settings:
+	Start Time                     (sec) = 0
+	End Time                       (sec) = 400
+	Time Step Size                 (sec) = 0.01
+	Ramp Function Time             (sec) = 40
+	Convolution Integral Interval  (sec) = 60
+	 Number of Time Steps     = 40000 
+
+Wave Environment: 
+	Wave Type                           = Waves with imported wave elevation time-history
+	Wave Elevation Time-Series File    	= etaData.mat  
+
+List of Body: Number of Bodies = 2 
+
+	***** Body Number 1, Name: float *****
+	Body CG                          (m) = [0,0,-0.72]
+	Body Mass                       (kg) = 725833 
+	Body Diagonal MOI              (kgm2)= [2.09073E+07,2.13061E+07,3.70855E+07]
+
+	***** Body Number 2, Name: spar *****
+	Body CG                          (m) = [0,0,-21.29]
+	Body Mass                       (kg) = 886687 
+	Body Diagonal MOI              (kgm2)= [9.44196E+07,9.44071E+07,2.85422E+07]
+
+List of PTO(s): Number of PTOs = 1 
+
+	***** PTO Name: PTO1 *****
+	PTO Stiffness           (N/m;Nm/rad) = 0
+	PTO Damping           (Ns/m;Nsm/rad) = 1.2E+06
+
+List of Constraint(s): Number of Constraints = 1 
+
+	***** Constraint Name: Constraint1 *****
+
+
+Simulating the WEC device defined in the SimMechanics model C:\Users\Dizzy\Documents\GitHub\WEC-Sim_Applications\Mooring\MooringMatrix\RM3MooringMatrix.slx...   
+Elapsed time is 8.164820 seconds.
+
+Build Summary
+
+Top model rapid accelerator targets built:
+
+Model             Action  Rebuild Reason                                    
+============================================================================
+RM3MooringMatrix  Failed  Code generation information file does not exist.  
+
+0 of 1 models built (0 models already up to date)
+Build duration: 0h 0m 15.392s
+------Error in the Model, Error-Causes/Messsages are :
+.
+Done TestMooring
+__________
+
+Failure Summary:
+
+     Name                     Failed  Incomplete  Reason(s)
+    ======================================================================
+     TestMooring/testMoorDyn              X       Filtered by assumption.
+bemio
+addWecSimSource
+clear
+clc
+wecSim
+WEC-Sim: An open-source code for simulating wave energy converters
+Version: 5.0.1
+
+Initializing the Simulation Class...
+	Case Dir: C:\Users\Dizzy\Documents\GitHub\WEC-Sim\examples\RM3FromSimulink 

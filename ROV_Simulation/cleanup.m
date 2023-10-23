@@ -10,7 +10,9 @@ rmpath(fullfile(projectRootDir,'libraries'));
 rmpath(fullfile(projectRootDir,genpath('models')));
 rmpath(fullfile(projectRootDir,genpath('scripts')));
 rmpath(fullfile(projectRootDir,'work'));
-
+% Define WEC-Sim source and add to MATLAB path
+wecSimSource = fullfile(pwd,'WEC Sim');
+rmpath(genpath(wecSimSource));
 
 % Reset the loction of Simulink-generated files
 Simulink.fileGenControl('reset');

@@ -1,0 +1,27 @@
+
+WEC-Sim Input From Standard wecSimInputFile.m Of Case Directory... 
+WEC-Sim: An open-source code for simulating wave energy converters
+Version: 5.0.1
+
+Initializing the Simulation Class...
+	Case Dir: C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\tutorials\RM3 
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('waveClass/checkInputs')" style="font-weight:bold">waveClass/checkInputs</a>
+Unexpected wave environment type setting, choose from: "noWave", "noWaveCIC", "regular", "regularCIC", "irregular",
+"spectrumImport", and "elevationImport".
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('initializeWecSim', 'C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\functions\initializeWecSim.m', 100)" style="font-weight:bold">initializeWecSim</a> (<a href="matlab: opentoline('C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\functions\initializeWecSim.m',100,0)">line 100</a>)
+waves.checkInputs();
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('run', 'C:\Program Files\MATLAB\R2023a\toolbox\matlab\lang\run.m', 91)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2023a\toolbox\matlab\lang\run.m',91,0)">line 91</a>)
+evalin('caller', strcat(script, ';'));
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('wecSim', 'C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\wecSim.m', 43)" style="font-weight:bold">wecSim</a> (<a href="matlab: opentoline('C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\wecSim.m',43,0)">line 43</a>)
+run('initializeWecSim');
+} 
+opentoline('C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim\source\wecSim.m',43,0)
+wecSim
+WEC-Sim: An open-source code for simulating wave energy converters
+Version: 5.0.1
+
+Initializing the Simulation Class...
+	Case Dir: C:\Users\Dizzy\Documents\GitHub\Dhruvit_Mavani\ROV_Simulation\WEC Sim 

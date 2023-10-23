@@ -10,7 +10,9 @@ addpath(fullfile(projectRootDir,'libraries'),'-end');
 addpath(fullfile(projectRootDir,genpath('models')),'-end');
 addpath(fullfile(projectRootDir,genpath('scripts')),'-end');
 addpath(fullfile(projectRootDir,'work'),'-end');
-
+% Define WEC-Sim source and add to MATLAB path
+wecSimSource = fullfile(pwd,'WEC Sim');
+addpath(genpath(wecSimSource));
 
 % Save Simulink-generated helper files to work
 Simulink.fileGenControl('set',...
